@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import ItemForm from "../Components/ItemForm/ItemForm";
 import { deleteItem, fetchItems } from "../Redux/Actions/Item";
 import { useDispatch, useSelector } from "react-redux";
-import "./Inventory.css"
+import "./Inventory.css";
+import { TailSpin } from "react-loader-spinner";
 
 const categories = [
   "All",
@@ -39,6 +40,7 @@ const Inventory = () => {
   return (
     <div>
       <button onClick={() => setIsOpen({ action: "Add" })}>Add Item</button>
+
       <div>
         {" "}
         <label htmlFor="filter">Filter Based on Category: </label>
@@ -61,48 +63,63 @@ const Inventory = () => {
       </div>
 
       {isOpen && <ItemForm isOpen={isOpen} onClose={onClose} />}
-      <div className="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Delete/Update</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredData?.length > 0 ? (
-            filteredData?.map((item) => (
-              <tr key={item?._id}>
-                <td>{item?.name}</td>
-                <td>{item?.category}</td>
-                <td>{item?.quantity}</td>
-                <td>{item?.price}</td>
-                <td>
-                  {" "}
-                  <button onClick={() => dispatch(deleteItem(item?._id))}>
-                    Delete
-                  </button>
-                  <button
-                    onClick={() =>
-                      setIsOpen({ action: "Update", itemToBeUpdated: item })
-                    }
-                  >
-                    Update
-                  </button>
-                </td>
+      {itemsData?.length > 0 ? (
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Delete/Update</th>
               </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="4">No Items</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
-      </div>
+            </thead>
+            <tbody>
+              {filteredData?.length > 0 ? (
+                filteredData?.map((item) => (
+                  <tr key={item?._id}>
+                    <td>{item?.name}</td>
+                    <td>{item?.category}</td>
+                    <td>{item?.quantity}</td>
+                    <td>{item?.price}</td>
+                    <td>
+                      {" "}
+                      <button onClick={() => dispatch(deleteItem(item?._id))}>
+                        Delete
+                      </button>
+                      <button
+                        onClick={() =>
+                          setIsOpen({ action: "Update", itemToBeUpdated: item })
+                        }
+                      >
+                        Update
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5">No Items</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div className="table-container">
+          <TailSpin
+            height="50"
+            width="50"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="5"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+         </div>
+      )}
     </div>
   );
 };

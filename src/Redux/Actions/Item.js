@@ -11,7 +11,7 @@ export const fetchItems = () => async (dispatch) => {
   } catch (error) {
     dispatch({ type: "ERROR_FETCHING_DATA" });
 
-    console.error("Error while fetching exercise data", error);
+    console.error("Error while fetching  data", error);
   }
 };
 

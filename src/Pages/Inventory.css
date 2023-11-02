@@ -16,7 +16,7 @@ label {
 } */
 
 table {
-  width: 800px;
+  width: 80%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -51,13 +51,13 @@ td[colspan="4"] {
 }
 
 @media (max-width: 768px) {
-  .table-container {
+  /* .table-container {
     display: block;
     text-align: center;
-  }
+  } */
 
   table {
-    width: 100%;
+    width: 80%;
     font-size: 14px;
     margin-top: 10px;
     border: 1px solid #000000;
