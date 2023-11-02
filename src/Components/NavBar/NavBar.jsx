@@ -44,6 +44,11 @@ const NavBar = () => {
             Reports and Analytics
           </NavLink>
         </li>
+        <li>
+          <a href="https://github.com/zabihhaqqani/Gen-Inventory" className={getActiveStyle}>Github</a>
+          
+        </li>
+        
       </ul>
     </nav>
   );
