@@ -106,23 +106,19 @@ const Inventory = () => {
             </tbody>
           </table>
         </div>
-      ) : filteredData?.length !== 0 ? (
-        <>
-          <div className="table-container">
-            <TailSpin
-              height="50"
-              width="50"
-              color="#4fa94d"
-              ariaLabel="tail-spin-loading"
-              radius="5"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          </div>
-        </>
       ) : (
-        "No Items in inventory"
+        <div className="table-container">
+          <TailSpin
+            height="50"
+            width="50"
+            color="#4fa94d"
+            ariaLabel="tail-spin-loading"
+            radius="5"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        </div>
       )}
     </div>
   );
