@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiEndpoint =
-  "https://inventory-management.zabihhaqqani1.repl.co/api/sales";
+  "https://7f9a6a45-68a8-472d-ac44-ff704d9ded5c-00-2n8rzw8p3sn1c.pike.replit.dev/api/sales";
 
 export const fetchSales= () => async (dispatch) => {
   try {
